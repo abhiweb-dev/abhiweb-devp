@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact on WhatsApp</title>
+  <style>
+    body{
+      font-family: Arial;
+      background:#f2f2f2;
+    }
+    .box{
+      max-width:400px;
+      margin:40px auto;
+      background:white;
+      padding:20px;
+      border-radius:10px;
+    }
+    input, select, button{
+      width:100%;
+      padding:10px;
+      margin-top:10px;
+    }
+    button{
+      background:green;
+      color:white;
+      border:none;
+      font-size:16px;
+      cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Contact on WhatsApp</h2>
+
+  <input type="text" id="name" placeholder="Your Name">
+  <input type="tel" id="mobile" placeholder="Mobile Number">
+
+  <select id="service">
+    <option value="">Select Service</option>
+    <option value="website">Website Design</option>
+    <option value="landing">Landing Page</option>
+    <option value="form">Form Page</option>
+    <option value="other">Other</option>
+  </select>
+
+  <button type="button" onclick="sendWhatsApp()">Send on WhatsApp</button>
+</div>
+
+<script>
+function sendWhatsApp(){
+
+  var name = document.getElementById("name").value;
+  var mobile = document.getElementById("mobile").value;
+  var service = document.getElementById("service").value;
+
+  if(name === "" || mobile === "" || service === ""){
+    alert("Please fill all details");
+    return;
+  }
+
+  var msg = "";
+  var price = "";
+
+  if(service === "website"){
+    msg = "I need a complete website";
+    price = "₹999";
+  } else if(service === "landing"){
+    msg = "I need a landing page";
+    price = "₹499";
+  } else if(service === "form"){
+    msg = "I need a contact form";
+    price = "₹299";
+  } else {
+    msg = "I want a custom requirement";
+    price = "To be discussed";
+  }
+
+  var finalMsg =
+    "Name: " + name +
+    "\nMobile: " + mobile +
+    "\nRequirement: " + msg +
+    "\nPrice: " + price;
+
+  var url = "https://wa.me/919812238942?text=" + encodeURIComponent(finalMsg);
+
+  
+  window.location.href = url;
+}
+</script>
+
+</body>
+</html>
